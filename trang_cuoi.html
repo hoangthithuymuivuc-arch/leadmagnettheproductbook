@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang cuối — Product Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
+    .heading-serif { font-family: 'Lora', serif; }
+    .gv-photo {
+      width: 7rem;
+      height: 7rem;
+      object-fit: cover;
+      border-radius: 1rem;
+      flex-shrink: 0;
+      background: #e2e8f0;
+    }
+    @media (min-width: 768px) {
+      .gv-photo { width: 8.5rem; height: 8.5rem; }
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen py-10 px-4 md:px-6">
+  <!--
+    Ảnh trong thư mục assets/:
+    - banner: banner-trang-cuoi.svg
+    - giảng viên: hoang-duc-minh-product-academy-300x300.png, Dang-hai-loc-300x300.png, Phong-nguyen-300x300.png
+    - logo: Product academy_logo.png
+  -->
+  <div class="max-w-4xl mx-auto space-y-10">
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-xl">
+      <img
+        src="assets/banner-trang-cuoi.svg"
+        alt="Banner Product Academy"
+        class="w-full h-auto block"
+        width="1200"
+        height="360"
+      />
+    </div>
+
+    <section class="space-y-6 md:space-y-8 text-slate-700 text-base md:text-lg leading-relaxed">
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 md:p-8 shadow-sm flex flex-col sm:flex-row gap-5 md:gap-8 items-start">
+        <img
+          src="assets/hoang-duc-minh-product-academy-300x300.png"
+          alt="Hoàng Đức Minh"
+          class="gv-photo mx-auto sm:mx-0"
+          loading="lazy"
+          width="136"
+          height="136"
+        />
+        <p class="flex-1 min-w-0 pt-0 sm:pt-1">
+          <strong class="text-slate-900">Anh Hoàng Đức Minh</strong> — Giám đốc chương trình Product Academy, với 10+ năm kinh nghiệm xây dựng chiến lược, dẫn dắt đổi mới sáng tạo và tăng trưởng sản phẩm (MoMo, BE GROUP, TAPTAP và ThinkZone Accelerator).
+        </p>
+      </article>
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 md:p-8 shadow-sm flex flex-col sm:flex-row gap-5 md:gap-8 items-start">
+        <img
+          src="assets/Dang-hai-loc-300x300.png"
+          alt="Đặng Hải Lộc"
+          class="gv-photo mx-auto sm:mx-0"
+          loading="lazy"
+          width="136"
+          height="136"
+        />
+        <p class="flex-1 min-w-0 pt-0 sm:pt-1">
+          <strong class="text-slate-900">Anh Đặng Hải Lộc</strong> — Founder Mindmaid, CEO AIV Group, với 5+ năm kinh nghiệm phát triển sản phẩm AI, đã triển khai AI cho hơn 100 doanh nghiệp.
+        </p>
+      </article>
+
+      <article class="rounded-2xl border border-slate-200 bg-white p-5 md:p-8 shadow-sm flex flex-col sm:flex-row gap-5 md:gap-8 items-start">
+        <img
+          src="assets/Phong-nguyen-300x300.png"
+          alt="Nguyễn Đình Phong"
+          class="gv-photo mx-auto sm:mx-0"
+          loading="lazy"
+          width="136"
+          height="136"
+        />
+        <p class="flex-1 min-w-0 pt-0 sm:pt-1">
+          <strong class="text-slate-900">Anh Nguyễn Đình Phong</strong> — CTO TitanPlan, Danishsoftware, với 7+ năm kinh nghiệm phát triển sản phẩm công nghệ (ứng dụng web và thiết bị di động).
+        </p>
+      </article>
+    </section>
+
+    <footer class="rounded-2xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm text-center space-y-6">
+      <div class="flex flex-col items-center gap-4">
+        <img
+          src="assets/Product%20academy_logo.png"
+          alt="Product Academy"
+          class="h-12 md:h-16 w-auto max-w-[min(100%,280px)] object-contain object-center"
+          width="280"
+          height="80"
+        />
+        <p class="heading-serif text-xl md:text-2xl font-bold text-slate-900">Product Academy</p>
+      </div>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+        Phát triển năng lực bài bản và toàn diện cho người làm sản phẩm chuyên nghiệp
+      </p>
+      <ul class="space-y-3 text-left max-w-md mx-auto text-sm md:text-base">
+        <li class="flex gap-2">
+          <span class="shrink-0" aria-hidden="true">☎</span>
+          <span><strong class="text-slate-800">Hotline:</strong> <a href="tel:+84367155580" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900">036-715-5580</a></span>
+        </li>
+        <li class="flex gap-2">
+          <span class="shrink-0" aria-hidden="true">📩</span>
+          <span><strong class="text-slate-800">Email:</strong> <a href="mailto:hanhnhm@agilead.vn" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900">hanhnhm@agilead.vn</a></span>
+        </li>
+        <li class="flex gap-2">
+          <span class="shrink-0" aria-hidden="true">🌍</span>
+          <span><strong class="text-slate-800">Website:</strong> <a href="https://productacademy.edu.vn/" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900 break-all">https://productacademy.edu.vn/</a></span>
+        </li>
+      </ul>
+    </footer>
+
+  </div>
+</body>
+</html>

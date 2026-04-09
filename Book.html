@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Product Book — Cẩm nang trở thành Product Manager xuất sắc (Bản tóm tắt)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", sans-serif; }
+    .book-title { font-family: "Lora", serif; }
+    .chapter-item[aria-current="true"] {
+      background: rgba(255, 113, 249, 0.12);
+      border-color: #ff71f9;
+      color: #a21caf;
+    }
+    /* Bìa tham chiếu: navy, gáy trái, mép trang phải, đổ bóng mềm */
+    .cover-book {
+      position: relative;
+      background: linear-gradient(165deg, #243047 0%, #1a2332 38%, #141c28 100%);
+      overflow: hidden;
+    }
+    .cover-book::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: min(14%, 96px);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.18) 45%, transparent 100%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .cover-book::after {
+      content: "";
+      position: absolute;
+      top: 8%;
+      bottom: 8%;
+      right: 8px;
+      width: 4px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #f8fafc 0%, #cbd5e1 50%, #e2e8f0 100%);
+      box-shadow: -1px 0 2px rgba(15, 23, 42, 0.25);
+      pointer-events: none;
+    }
+    .cover-inner {
+      width: 100%;
+      max-width: min(42rem, 92%);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .book-cover-shadow {
+      box-shadow:
+        0 4px 6px rgba(15, 23, 42, 0.08),
+        0 18px 40px rgba(15, 23, 42, 0.18),
+        0 40px 80px rgba(15, 23, 42, 0.22),
+        12px 28px 60px rgba(15, 23, 42, 0.2);
+    }
+    .cover-title-montserrat {
+      font-family: "Montserrat", system-ui, sans-serif;
+    }
+    .cover-product-accent {
+      font-family: "Lora", Georgia, serif;
+      font-style: italic;
+      color: #ff71f9;
+    }
+    .chapter-body {
+      background: white;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 260ms ease, transform 260ms ease;
+      min-height: 30vh;
+    }
+    .chapter-body.ready {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .toc-panel {
+      transition: transform 220ms ease, opacity 220ms ease;
+    }
+    .toc-panel.hidden-panel {
+      transform: translateY(12px) scale(0.98);
+      opacity: 0;
+      pointer-events: none;
+    }
+    .chapter-shell {
+      content-visibility: auto;
+      contain-intrinsic-size: 1400px;
+    }
+    .chapter-shell + .chapter-shell {
+      margin-top: 1.5rem;
+    }
+    .portrait-page {
+      width: min(100%, 860px);
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 1120px;
+    }
+    /* Cùng độ rộng tối đa với khung chương (860px), không ép min-height như trang nội dung */
+    .cover-match-reading {
+      width: min(100%, 860px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 768px) {
+      .portrait-page {
+        min-height: auto;
+      }
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .floating-progress-track {
+      background: rgba(15, 23, 42, 0.1);
+    }
+    .floating-progress-fill {
+      background: linear-gradient(90deg, #4f46e5 0%, #9333ea 100%);
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.65), 0 0 28px rgba(147, 51, 234, 0.4);
+    }
+    .chapter-iframe {
+      width: 100%;
+      display: block;
+      border: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+  </style>
+</head>
+<body class="bg-slate-200 text-slate-800 antialiased">
+
+  <!-- Floating progress bar — cạnh trên cùng -->
+  <div class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 md:px-10 lg:px-14 pt-3 pb-2 pointer-events-none">
+    <div class="max-w-5xl mx-auto pointer-events-auto">
+      <div class="flex items-center justify-between gap-3 mb-1.5">
+        <span class="text-[11px] sm:text-xs font-medium text-slate-600 tracking-wide">Tiến độ đọc</span>
+        <span id="progressText" class="text-[11px] sm:text-xs font-semibold text-slate-700 tabular-nums">0%</span>
+      </div>
+      <div class="floating-progress-track w-full rounded-full h-2.5 sm:h-3 overflow-hidden shadow-inner">
+        <div id="progressBarTop" class="floating-progress-fill h-full rounded-full transition-[width] duration-300 ease-out" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB Mục lục — góc dưới phải -->
+  <button
+    type="button"
+    id="openTocBtn"
+    class="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-slate-900 text-white shadow-2xl shadow-slate-900/35 ring-4 ring-white/80 transition hover:bg-slate-800 hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+    aria-label="Mở mục lục"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+    </svg>
+  </button>
+
+  <!-- Panel mục lục (mở từ FAB) -->
+  <aside
+    id="tocPanel"
+    class="toc-panel hidden-panel fixed bottom-24 right-6 z-40 w-[min(360px,calc(100vw-3rem))] max-h-[min(70vh,520px)] glass-card border border-white/60 rounded-2xl p-4 md:p-5 shadow-2xl overflow-y-auto"
+  >
+    <div class="flex items-center justify-between mb-3">
+      <h2 class="font-semibold text-slate-900 text-sm">Mục lục</h2>
+      <button id="closeTocBtn" type="button" class="text-xs px-2.5 py-1 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-700">Đóng</button>
+    </div>
+    <ul id="chapterList" class="space-y-1.5"></ul>
+  </aside>
+
+  <!-- Nội dung đọc: padding đều, bìa căn giữa -->
+  <main class="min-h-screen pt-20 pb-28 px-6 sm:px-10 md:px-14 lg:px-16 xl:px-20">
+    <div id="readerContent" class="mx-auto max-w-4xl space-y-8 sm:space-y-10 md:space-y-12">
+      <article
+        id="cover"
+        data-index="0"
+        class="cover-book cover-match-reading flex w-full flex-col items-center justify-center rounded-2xl book-cover-shadow text-white aspect-[2/3] px-6 py-14 sm:px-10 sm:py-16 md:px-14 md:py-20 lg:px-16 z-0"
+      >
+        <div class="cover-inner relative z-10 text-center">
+          <p class="uppercase tracking-[0.32em] text-slate-400 text-[11px] sm:text-xs md:text-sm font-medium">
+            Product Academy Edition
+          </p>
+          <h2 class="mt-8 sm:mt-10 md:mt-12 text-white font-bold leading-[1.05] tracking-tight">
+            <span class="cover-title-montserrat block text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem]">The</span>
+            <span class="cover-product-accent block text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-2 sm:mt-3 md:mt-4">Product</span>
+            <span class="cover-title-montserrat block text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] mt-2 sm:mt-3 md:mt-4">Book</span>
+          </h2>
+          <div class="mx-auto mt-6 sm:mt-8 md:mt-10 h-0.5 w-16 sm:w-20 md:w-24 bg-white/45 rounded-full" aria-hidden="true"></div>
+          <p class="cover-subtitle-vi mt-6 sm:mt-8 md:mt-10 text-slate-200/95 text-sm sm:text-base md:text-lg leading-snug sm:leading-relaxed max-w-2xl mx-auto font-normal px-1">
+            <span class="block">Cẩm nang trở thành Product Manager xuất sắc</span>
+            <span class="block mt-1.5 sm:mt-2 text-slate-300/90">(Bản tóm tắt)</span>
+          </p>
+          <div class="mt-10 sm:mt-12 md:mt-14 inline-flex items-center gap-2.5 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/[0.08] border border-white/15 text-xs sm:text-sm text-slate-100">
+            <span>Cuộn xuống để đọc</span>
+            <span class="text-base leading-none" aria-hidden="true">↓</span>
+          </div>
+        </div>
+      </article>
+      <div id="chapterContainer" class="space-y-6"></div>
+    </div>
+  </main>
+
+  <script>
+    const chapters = [
+      { title: "Chương 1: What Is Product Management?", file: "Chapter_01_The_Product_Book.html" },
+      { title: "Chương 2: Understanding Your Company's Vision", file: "Chapter_02_The_Product_Book.html" },
+      { title: "Chương 3: Understanding the Market", file: "Chapter_03_The_Product_Book.html" },
+      { title: "Chương 4: Product Discovery", file: "Chapter_04_The_Product_Book.html" },
+      { title: "Chương 5: Product Delivery", file: "Chapter_05_The_Product_Book.html" },
+      { title: "Chương 6: Product Tracking and Growth", file: "Chapter_06_The_Product_Book.html" },
+      { title: "Chương 7: Working with Teams", file: "Chapter_07_The_Product_Book.html" },
+      { title: "Chương 8: Working with Stakeholders", file: "Chapter_08_The_Product_Book.html" },
+      { title: "Chương 9: Finishing the Cycle", file: "Chapter_09_The_Product_Book.html" }
+    ];
+
+    const contentPages = [
+      { title: "Lời nói đầu", file: "Loi_noi_dau.html" },
+      ...chapters,
+      { title: "Trang cuối", file: "trang_cuoi.html" }
+    ];
+
+    const storageKey = "product-book-v3-last-position";
+    const chapterList = document.getElementById("chapterList");
+    const progressText = document.getElementById("progressText");
+    const progressBarTop = document.getElementById("progressBarTop");
+    const openTocBtn = document.getElementById("openTocBtn");
+    const closeTocBtn = document.getElementById("closeTocBtn");
+    const tocPanel = document.getElementById("tocPanel");
+    const chapterContainer = document.getElementById("chapterContainer");
+    const cover = document.getElementById("cover");
+
+    const sections = [cover];
+    let currentIndex = 0;
+    let observer = null;
+
+    function renderChapterList() {
+      chapterList.innerHTML = "";
+      const coverItem = document.createElement("li");
+      const coverBtn = document.createElement("button");
+      coverBtn.type = "button";
+      coverBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
+      coverBtn.textContent = "Trang bìa";
+      coverBtn.setAttribute("aria-current", currentIndex === 0 ? "true" : "false");
+      coverBtn.addEventListener("click", () => scrollToSection(0));
+      coverItem.appendChild(coverBtn);
+      chapterList.appendChild(coverItem);
+
+      const forewordItem = document.createElement("li");
+      const forewordBtn = document.createElement("button");
+      forewordBtn.type = "button";
+      forewordBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
+      forewordBtn.textContent = "Lời nói đầu";
+      forewordBtn.setAttribute("aria-current", currentIndex === 1 ? "true" : "false");
+      forewordBtn.addEventListener("click", () => scrollToSection(1));
+      forewordItem.appendChild(forewordBtn);
+      chapterList.appendChild(forewordItem);
+
+      chapters.forEach((chapter, index) => {
+        const li = document.createElement("li");
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
+        btn.textContent = chapter.title;
+        btn.setAttribute("aria-current", index + 2 === currentIndex ? "true" : "false");
+        btn.addEventListener("click", () => scrollToSection(index + 2));
+        li.appendChild(btn);
+        chapterList.appendChild(li);
+      });
+
+      const closingIdx = chapters.length + 2;
+      const closingItem = document.createElement("li");
+      const closingBtn = document.createElement("button");
+      closingBtn.type = "button";
+      closingBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
+      closingBtn.textContent = "Trang cuối";
+      closingBtn.setAttribute("aria-current", currentIndex === closingIdx ? "true" : "false");
+      closingBtn.addEventListener("click", () => scrollToSection(closingIdx));
+      closingItem.appendChild(closingBtn);
+      chapterList.appendChild(closingItem);
+    }
+
+    function updateProgress() {
+      const last = Math.max(sections.length - 1, 1);
+      const percentage = Math.round((currentIndex / last) * 100);
+      progressText.textContent = percentage + "%";
+      progressBarTop.style.width = percentage + "%";
+    }
+
+    function setCurrentIndex(index) {
+      currentIndex = index;
+      updateProgress();
+      renderChapterList();
+    }
+
+    function scrollToSection(index) {
+      if (index < 0 || index >= sections.length) return;
+      sections[index].scrollIntoView({ behavior: "smooth", block: "start" });
+      setCurrentIndex(index);
+      localStorage.setItem(storageKey, String(index));
+      tocPanel.classList.add("hidden-panel");
+    }
+
+    function setupObserver() {
+      if (observer) observer.disconnect();
+      observer = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const index = Number(visible.target.dataset.index || "0");
+        setCurrentIndex(index);
+        localStorage.setItem(storageKey, String(index));
+      }, { threshold: [0.4, 0.6, 0.8] });
+      sections.forEach(section => observer.observe(section));
+    }
+
+    function extractBodyContent(htmlText) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, "text/html");
+      return doc.body ? doc.body.innerHTML : htmlText;
+    }
+
+    function applyIframeNoInnerScroll(doc) {
+      if (!doc || !doc.documentElement || !doc.body) return;
+      const html = doc.documentElement;
+      const body = doc.body;
+      body.classList.remove("min-h-screen", "h-screen", "min-h-dvh");
+      html.style.overflow = "hidden";
+      html.style.height = "auto";
+      body.style.overflow = "visible";
+      body.style.minHeight = "0";
+      body.style.height = "auto";
+    }
+
+    function measureIframeContentHeight(doc) {
+      if (!doc || !doc.documentElement || !doc.body) return 0;
+      const html = doc.documentElement;
+      const body = doc.body;
+      return Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.scrollHeight,
+        html.offsetHeight,
+        html.clientHeight
+      );
+    }
+
+    function resizeChapterIframe(iframe) {
+      try {
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        applyIframeNoInnerScroll(doc);
+        const h = measureIframeContentHeight(doc);
+        iframe.style.height = Math.max(h, 400) + "px";
+        iframe.style.overflow = "hidden";
+      } catch {
+        iframe.style.height = "1200px";
+        iframe.style.overflow = "hidden";
+      }
+    }
+
+    function bindIframeAutoHeight(iframe) {
+      const win = iframe.contentWindow;
+      if (!win) return;
+      const schedule = () => {
+        resizeChapterIframe(iframe);
+        [0, 80, 200, 450, 900].forEach((ms) => {
+          setTimeout(() => resizeChapterIframe(iframe), ms);
+        });
+      };
+      win.addEventListener("resize", () => resizeChapterIframe(iframe));
+      try {
+        const imgs = win.document.querySelectorAll("img");
+        imgs.forEach((img) => {
+          if (!img.complete) img.addEventListener("load", schedule, { once: true });
+        });
+      } catch {}
+      schedule();
+    }
+
+    /**
+     * fetch() thường bị chặn khi mở Book.html qua file:// (trình duyệt chặn đọc file local).
+     * Khi đó dùng iframe (src) — cùng thư mục vẫn tải được.
+     */
+    async function loadChapterInto(holder, chapter) {
+      holder.innerHTML = "<div class='p-6 text-slate-500'>Đang tải nội dung...</div>";
+
+      try {
+        const res = await fetch(chapter.file, { cache: "no-store" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const text = await res.text();
+        holder.innerHTML = extractBodyContent(text);
+        holder.style.overflow = "visible";
+        holder.querySelectorAll("[style*='overflow']").forEach((el) => {
+          const s = el.getAttribute("style") || "";
+          if (/overflow\s*:\s*(auto|scroll)/i.test(s)) el.style.overflow = "visible";
+        });
+        requestAnimationFrame(() => holder.classList.add("ready"));
+        return;
+      } catch {
+        /* fallback file:// hoặc CORS */
+      }
+
+      holder.innerHTML = "";
+      const iframe = document.createElement("iframe");
+      iframe.className = "chapter-iframe";
+      iframe.title = chapter.title;
+      iframe.setAttribute("referrerpolicy", "no-referrer");
+      iframe.src = new URL(chapter.file, window.location.href).href;
+      iframe.addEventListener("load", () => {
+        resizeChapterIframe(iframe);
+        bindIframeAutoHeight(iframe);
+        requestAnimationFrame(() => holder.classList.add("ready"));
+      });
+      iframe.addEventListener("error", () => {
+        holder.innerHTML =
+          "<div class='p-6 text-red-600 text-sm'>Không tải được chương. Hãy chạy site bằng máy chủ local (ví dụ: <code class=\"bg-slate-100 px-1 rounded\">npx serve</code> trong thư mục này) rồi mở qua <code class=\"bg-slate-100 px-1 rounded\">http://localhost</code>.</div>";
+        holder.classList.add("ready");
+      });
+      holder.appendChild(iframe);
+    }
+
+    async function createChapterSections() {
+      for (let chapterIdx = 0; chapterIdx < contentPages.length; chapterIdx++) {
+        const chapter = contentPages[chapterIdx];
+        const article = document.createElement("article");
+        article.className = "portrait-page chapter-shell rounded-2xl border border-slate-200 bg-white shadow-lg";
+        article.dataset.index = String(chapterIdx + 1);
+        const holder = document.createElement("div");
+        holder.className = "chapter-body p-0";
+        article.appendChild(holder);
+        chapterContainer.appendChild(article);
+        sections.push(article);
+
+        await loadChapterInto(holder, chapter);
+      }
+      setupObserver();
+    }
+
+    openTocBtn.addEventListener("click", () => {
+      tocPanel.classList.toggle("hidden-panel");
+    });
+    closeTocBtn.addEventListener("click", () => {
+      tocPanel.classList.add("hidden-panel");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") tocPanel.classList.add("hidden-panel");
+    });
+
+    async function init() {
+      await createChapterSections();
+      renderChapterList();
+      updateProgress();
+
+      const savedIndex = Number(localStorage.getItem(storageKey));
+      if (!Number.isNaN(savedIndex) && savedIndex >= 0 && savedIndex < sections.length) {
+        setTimeout(() => scrollToSection(savedIndex), 300);
+      } else {
+        setCurrentIndex(0);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
