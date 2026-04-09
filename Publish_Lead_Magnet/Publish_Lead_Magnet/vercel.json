@@ -1,0 +1,10 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/Book.html",
+      "permanent": false
+    }
+  ]
+}

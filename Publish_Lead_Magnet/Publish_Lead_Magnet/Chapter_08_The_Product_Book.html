@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 8: Bringing Your Product to Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
+        h1, h2, h3, .serif-text { font-family: 'Lora', serif; }
+        .clean-card {
+            background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .clean-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+        .accent-blue { color: #ff71f9; }
+        .bg-accent-blue { background-color: #ff71f9; color: #ffffff; }
+    </style>
+</head>
+<body class="antialiased min-h-screen py-12 px-5 md:px-0">
+  <div class="max-w-4xl mx-auto space-y-16">
+
+<header class="text-center space-y-6 mb-16">
+    <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">Tóm tắt sách The Product Book</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+        Chương 8<br><span class="accent-blue text-3xl mt-2 block">Bringing Your Product to Market</span>
+    </h1>
+            
+    <div class="text-lg text-slate-700 mt-6 max-w-3xl mx-auto leading-relaxed">
+        <strong>Tổng quan:</strong> Máy chủ chạy ổn định mới chỉ là một nửa chặng đường. Chương 8 chỉ ra cách bạn tạm gác tư duy quản lý dự án để chuyển sang góc nhìn tiếp thị. Bạn sẽ biết cách lên lịch phân phối sản phẩm, chuyển đổi các thuật ngữ kỹ thuật khó hiểu thành thông điệp bán hàng, đồng thời thiết lập môi trường dùng thử cho nhóm nhỏ trước khi giới thiệu chính thức.
+    </div>
+            
+    <div class="bg-white p-8 mt-10 italic text-lg text-slate-600 border-l-4 border-[#ff71f9] rounded-r-lg text-left shadow-sm">
+        <p>"Hệ thống đã chạy trơn tru mượt mà. Giờ bạn muốn chợp mắt một chút? Khoan đã. Dù sản phẩm có đẳng cấp vũ trụ đến nhường nào, nếu không có cái phễu đổ ra đường phân phối, nó cũng vô giá trị như một đoạn code chết. Giờ là lúc bạn lột xác diện chiếc áo thị trường, đi rải rác những mẩu bùa tiếp thị để đứa con tinh thần này không yểu mệnh gục ngã từ ngày ra mắt."</p>
+    </div>
+</header>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">1</span>
+        <span>Lằn ranh giữa PM và PMM</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Đội hình chiến đấu đòi hỏi phân ly chức vụ. Product Manager (PM) lo nhiệm vụ Inbound (<em>Quản trị đầu vào</em>) – xây dựng cốt cán hệ thống. Còn Product Marketing Manager (PMM) quản lý cái cày hái Outbound (<em>Quản trị đầu ra</em>) – xông pha gắt gao bán hàng.<br><br>Nhưng để bán được, PM buộc phải là chủ xị phác họa ra Product Messaging (<em>Thông điệp Sản phẩm</em>). Cứ hiểu đơn giản thế này: Dev làm ra cái bánh xe rãnh ngang, PMM đi rao bán chiếc bánh xe, còn PM là ông thần ngồi suy luận giải thích tại sao dân tình cần kết cấu rãnh ngang này hơn rãnh dọc.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">2</span>
+        <span>Kỹ thuật viết thông điệp (Customer's Diction)</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Có một sự thật rõ ràng: Chẳng ma nào chi tiền mua tính năng phần cứng. Người ta không rút ví vì cái PC "RAM 32GB chạy chip lõi tứ XYZ", họ trả tiền cho "cái máy chiến mượt ván Liên Minh Huyền Thoại cắm sạc qua đêm mà không nóng".<br><br>Nhiệm vụ tối thượng của người PM là xào nấu ngôn ngữ dân code trở về Customer's Diction (<em>Nguyên thể ngôn ngữ của khách</em>). Sản phẩm y tế thì phải khô khan mà chắc cú như đinh đóng cột, app giới trẻ thì phải đôm đốp nhí nhố. Sự trật nhịp giọng điệu này là hung thủ số một đuổi cổ user đi trong mười giây đầu chạm màn hình.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">3</span>
+        <span>Kho vũ khí Go-to-Market (GTM)</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Chiến thuật đâm thủng thị trường đặt cược trên cửa Thời điểm (<em>Timing</em>). Làm khóa học học sinh mà không ra mắt được trong tháng tựu trường thì coi như vứt cày sang năm mới.<br><br>Cấm kỵ bất biến thứ hai: Đừng dại dột kéo cần xả đập update tung tóe 100% người dùng mà không cài chốt Beta Testing (<em>Thử nghiệm giới hạn</em>). Bạn phải chạy Closed Beta cho luồng VIP hoặc lén lút (<em>Auto Opt-in</em>) thảy cho 1% hệ lưu lượng khách dùng vô danh trải nghiệm trước. Đừng ngu ngốc mở khóa tổng một lượt khiến máy chủ quá tải và hệ thống nổ tung ở ngày ăn mừng.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">4</span>
+        <span>Lời giải từ DRI</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Và đôi khi, đang bí văn tìm những lời viết bài quảng cáo sát rạt lòng người, hãy túm lưng áo ông DRI (<em>Người chịu trách nhiệm trực tiếp</em>) - phần đông là cái ông đã thức đêm viết cục code đó. Đưa kịch bản diễn giải cho ổng, để dân kỹ thuật chia sẻ về thứ con cưng của mình. Lăn xả với hệ thống, ông thốt ra đầy mộc mạc và chuẩn gu lõi mà bạn không thể phịa văn bằng tiếp thị. Bạn gọt chữ từ đó mà ra câu văn bán hàng bá đạo nhất.
+    </div>
+</section>
+
+<section class="mt-20 bg-slate-900 text-white p-10 md:p-12 rounded-2xl shadow-xl text-center">
+    <p class="text-[#ff71f9] font-medium tracking-wide uppercase text-sm mb-2">Định hướng tiếp theo</p>
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 font-serif">Sẵn sàng đi tiếp</h3>
+    <p class="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed text-lg">
+        Launching (<em>Quá trình phát hành</em>) không phải là vạch đích của tiến trình phần mềm, mà là vạch xuất phát của cuộc chiến phân phối bán hàng. Sau khi sản phẩm chính thức hiện diện trên thiết bị của khách hàng, liệu chặng đường quản trị của PM có kết thúc? Chương 9 sẽ phơi bày thực tế vận hành ở giai đoạn hậu kiểm, nơi những cuộc họp mổ xẻ rủi ro mới thực sự bắt đầu.
+    </p>
+</section>
+  </div>
+</body>
+</html>

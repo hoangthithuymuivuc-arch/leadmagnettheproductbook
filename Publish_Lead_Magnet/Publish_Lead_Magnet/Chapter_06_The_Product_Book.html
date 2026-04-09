@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 6: Working with Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
+        h1, h2, h3, .serif-text { font-family: 'Lora', serif; }
+        .clean-card {
+            background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .clean-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+        .accent-blue { color: #ff71f9; }
+        .bg-accent-blue { background-color: #ff71f9; color: #ffffff; }
+    </style>
+</head>
+<body class="antialiased min-h-screen py-12 px-5 md:px-0">
+  <div class="max-w-4xl mx-auto space-y-16">
+
+<header class="text-center space-y-6 mb-16">
+    <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">Tóm tắt sách The Product Book</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+        Chương 6<br><span class="accent-blue text-3xl mt-2 block">Working with Design</span>
+    </h1>
+            
+    <div class="text-lg text-slate-700 mt-6 max-w-3xl mx-auto leading-relaxed">
+        <strong>Tổng quan:</strong> Hệ thống chạy tốt đến mấy cũng ít người dùng nếu giao diện quá khó thao tác. Chương 6 vạch ra lằn ranh công việc để bạn làm việc nhịp nhàng cùng bộ phận thiết kế. Bạn sẽ có thêm các nguyên tắc đánh giá logic để phản hồi bản làm thử, giúp quá trình hợp tác đi đúng hướng giải quyết vấn đề cho khách thay vì tranh cãi mệt mỏi về màu sắc.
+    </div>
+            
+    <div class="bg-white p-8 mt-10 italic text-lg text-slate-600 border-l-4 border-[#ff71f9] rounded-r-lg text-left shadow-sm">
+        <p>"Có bao giờ bạn nhìn vào màn hình của Designer, ngứa mắt chê xấu, rồi tự thân vẽ đại một cái nháp lên giấy và bắt họ làm y hệt? Đừng bao giờ lặp lại cái kịch bản đó nữa. Bạn đang trực tiếp đạp đổ sĩ diện đồng nghiệp và hạ thấp uy tín của chính mình. Chương này không dạy bạn cách xài Figma nghệ thuật. Trọng tâm nằm ở việc vạch ranh giới chức năng và dùng ngôn ngữ lý trí để chốt hạ giao diện."</p>
+    </div>
+</header>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">1</span>
+        <span>Cơ chế phân mảnh vai trò</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Quy định nguyên ranh giới thép ngay ngày làm việc đầu: Bạn là Product Manager, không phải là ông hoàng độc tài thiết kế (<em>Product Dictator</em>).<br><br>Nhiệm vụ của PM là đưa ra bài toán và yêu cầu đầu ra (Ví dụ: Khách hàng phải đặt món chậm nhất là qua ba màn chạm tay). Ngược lại, Designer sẽ trả lời câu hỏi Làm thế nào (<em>How</em>). Họ nắm sinh sát về kích thước khung hiển thị, bánh xe màu sắc và tỷ lệ vùng trống. Nguyên tắc cốt thiết: Tránh phác thảo giao diện trên PRD ép bộ phận thiết kế làm giống hệt.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">2</span>
+        <span>Hệ thống khái niệm giao tiếp đồ họa</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Hiểu nhầm thường xuyên xảy ra khi các đội lấy nhầm từ vựng chuyên môn để đối chọi lời lẽ. PM cần thuộc lòng ba cấp độ bản vẽ thiết kế cơ bản:<br><br>Một là Wireframe (<em>Bản phác thảo thô</em>). Giao diện tĩnh rặt khung xương xám đen để khoanh vùng luồng hiển thị, đẹp hay xấu lúc này lờ đi.<br><br>Hai là Mock-up (<em>Mô hình tĩnh</em>). Bản vẽ đã được tinh màu và thiết lập độ sắc nét chân thực nhất, nhưng click thử thì chưa chạy được.<br><br>Ba là Prototype (<em>Bản mẫu thử nghiệm</em>). Giao diện này đã kết nối chuyển động thao tác như ứng dụng hoàn thành, để đưa cho phòng ban thử nghiệm trước khi code.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">3</span>
+        <span>Khung phản hồi lý tính</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Từ bỏ ngay những câu chê bai theo sở thích kiểu "Tôi trộm thấy màu xanh đẹp hơn". Thay vào đó, một PM chất lượng đập tan tranh luận bằng hai viên đạn lý trí:<br><br>Một - thiết kế vòng vèo này có giúp Persona (<em>Chân dung khách hàng</em>) chạm đích trong thời gian ngắn nhất chưa? Hai - trên chuỗi thao tác hiển thị, có chỗ nào bị kẹt luồng hay đứt mạch (<em>friction</em>) không? Xung đột muôn thuở giữa tính năng (thuộc góc nhìn PM) và cái đẹp hoàn mỹ (thuộc góc nhìn Thiết kế) chỉ được định đoạt trước những bài phân tích số liệu rạch ròi.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">4</span>
+        <span>Đặc tả quy trình Design Sprint</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Mô hình Design Sprint 5 ngày độc quyền từ công ty đầu tư Google Ventures là một công cụ giúp hiệu chuẩn tốc độ lên ý tưởng. Kỹ thuật Crazy Eights (<em>Phác thảo đa chiều</em>) bắt buộc toàn bộ thành viên từ lập trình viên, PM đến lãnh đạo tham gia vào việc vẽ nhanh tám mô phỏng giao diện trong một khoản thời gian cực ngắn. Cơ chế này loại bỏ nỗi sợ bản vẽ thô ráp và tập hợp số lượng lớn luồng tư duy một cách có hệ thống.
+    </div>
+</section>
+
+<section class="mt-20 bg-slate-900 text-white p-10 md:p-12 rounded-2xl shadow-xl text-center">
+    <p class="text-[#ff71f9] font-medium tracking-wide uppercase text-sm mb-2">Định hướng tiếp theo</p>
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 font-serif">Sẵn sàng đi tiếp</h3>
+    <p class="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed text-lg">
+        Khả năng vạch rõ ranh giới công việc với đội ngũ Thiết kế là kỹ năng sống còn của vị trí Product Manager. Bản lĩnh của PM khi làm việc với Designer không phải là gu hoa lá thẩm mỹ, mà là năng lực chất vấn thực dụng: Thiết kế của anh chị có đập tan được vấn đề đã ghi trong tài liệu PRD chưa? Tất cả những thẩm quyền làm đẹp bề nổi còn lại là lãnh thổ độc quyền của đội thiết kế.
+    </p>
+</section>
+  </div>
+</body>
+</html>

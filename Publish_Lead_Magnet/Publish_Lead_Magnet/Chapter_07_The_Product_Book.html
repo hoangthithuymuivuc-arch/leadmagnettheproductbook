@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 7: Working with Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
+        h1, h2, h3, .serif-text { font-family: 'Lora', serif; }
+        .clean-card {
+            background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .clean-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+        .accent-blue { color: #ff71f9; }
+        .bg-accent-blue { background-color: #ff71f9; color: #ffffff; }
+    </style>
+</head>
+<body class="antialiased min-h-screen py-12 px-5 md:px-0">
+  <div class="max-w-4xl mx-auto space-y-16">
+
+<header class="text-center space-y-6 mb-16">
+    <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">Tóm tắt sách The Product Book</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+        Chương 7<br><span class="accent-blue text-3xl mt-2 block">Working with Engineering</span>
+    </h1>
+            
+    <div class="text-lg text-slate-700 mt-6 max-w-3xl mx-auto leading-relaxed">
+        <strong>Tổng quan:</strong> Chương này sẽ hướng dẫn bạn cách tương tác hàng ngày với các lập trình viên. Bạn sẽ làm quen với quy trình vận hành linh hoạt để chia nhỏ tiến độ nhiệm vụ một cách hợp lý. Xuyên suốt phần này, bạn sẽ học được kỹ năng thương lượng thời hạn hoàn thành, biết khi nào cần tập trung đẩy nhanh ứng dụng mới và khi nào nên lùi lại để họ xử lý các mớ mã nguồn lộn xộn.
+    </div>
+            
+    <div class="bg-white p-8 mt-10 italic text-lg text-slate-600 border-l-4 border-[#ff71f9] rounded-r-lg text-left shadow-sm">
+        <p>"Bước vào phòng Kỹ thuật, hãy nhớ lập trình viên không làm việc vì deadline ảo, họ làm vì sự hoàn mỹ của thuật toán. Đừng bao giờ thốt ra câu mang tính sát thương: "Chỉ là gắn thêm cái nút thôi mà, dev 5 phút là xong!". Làm vậy, bạn vừa tuyên chiến với cả thế giới kỹ thuật. Chương này là cẩm nang để bạn vừa thúc đẩy hiệu suất, vừa đắc nhân tâm khi vận hành cùng đội ngũ kỹ sư cứng đầu."</p>
+    </div>
+</header>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">1</span>
+        <span>Cương lĩnh giao tiếp (Tâm lý học Kỹ thuật)</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Kỹ sư phần mềm là những nghệ sĩ độc lập có tiêu chuẩn cực cao. Họ ghét cay ghét đắng thói quản lý vi mô (<em>Micro-management</em>) hay thói quen chỉ tay 5 ngón áp đặt.<br><br>Kỹ năng mềm đắt giá của một PM là biết lùi lại để hỏi: <em>"Anh em đánh giá kèo này khó tới mức nào?"</em>. Hãy để lập trình viên tự báo cáo giới hạn hệ thống. Từ chính con số ước tính đó, bạn hãy chủ động vung đao gọt bớt các tính năng màu mè để cứu rỗi deadline chung, thay vì o ép hệ thống phải è cổ gánh vác rủ ro sập nguồn.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">2</span>
+        <span>Ranh giới Waterfall và Agile</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Sự khác biệt khi quy hoạch tiến độ là lá bài quyết định sinh tử của sản phẩm.<br><br>Mô hình Waterfall (<em>Thác nước</em>) ép bạn chốt hạ bản thiết kế từ ngày đầu, rồi ném cho dev "bế quan" code điên cuồng suốt sáu tháng. Bi kịch của cách này nằm ở chỗ: Khi bưng sản phẩm ra thị trường, thị hiếu đã đổi chiều khiến đoạn code mồ hôi nước mắt kia thành đồ vô dụng mà không kịp quay đầu.<br><br>Ngược lại hệ thống Agile (<em>Linh hoạt</em>) chặt nhỏ tầm nhìn thành từng Sprint. Code xong cục nào ném ra thị trường cục đó, vớt Feedback (<em>Phản hồi</em>) và sửa ngay trong đêm. Thần chú bất diệt của hệ tư tưởng này: "Chấp nhận thay đổi quan trọng hơn bám víu vào cái kế hoạch cũ rích".
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">3</span>
+        <span>Khung thuật ngữ vận hành Scrum</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Để guồng chạy trơn tru, PM phải điều phối các nhịp đập vận hành hàng ngày:<br><br>Bước một là Backlog Grooming (<em>Cắt tỉa danh sách</em>). Đừng bao giờ quăng cho kỹ sư một tin nhắn cộc lốc báo "Màn hình sập rồi". Bạn phải ghi chép lại rành mạch cách thức vọc ra được lỗi đó (<em>Steps to reproduce</em>).<br><br>Bước thứ hai là đo lường rủi ro bằng Story Points (<em>Điểm độ khó</em>). Cách đong đếm này xóa rào cản thời gian bằng cách chấm điểm độ nặng tương đối (Ví dụ: Việc này cày ải chua gấp đôi việc kia).<br><br>Bước ba: Quản lý kỳ vọng bằng Icebox (<em>Thùng đá</em>). Gặp mấy cái ý tưởng bay bổng vô thưởng vô phạt từ cánh sale hay sếp, hãy ném hết chúng vào Icebox. Đây là một mũi tên trúng hai đích: Để lịch sự "say no" không làm mếch lòng ai, mà vẫn bảo toàn ngón đòn tập trung cho dự án hiện tại.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">4</span>
+        <span>Nợ kỹ thuật (Technical Debt) và sự cân bằng</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Thi thoảng, để kịp chạy mốc deadline sống còn, anh em kỹ sư buộc phải "chơi chiêu" chắp vá mã nguồn cho qua chuyện, bỏ lơ phần lõi để hiển thị UI ra cho kịp số. Đống bùi nhùi này tích tụ dần trên mâm gọi là Nợ kỹ thuật (<em>Technical Debt</em>).<br><br>Đừng lúc nào cũng tham lam thúc ép tính năng mới. Là PM tốt, bạn cần chừa ra những Sprint toàn phần chỉ để "trả nợ": Đội ngũ đập đi xây lại cái gốc rễ mã nguồn (<em>Refactoring</em>). Đây mới là bảo chứng đường dài giúp hệ thống không phát nổ.
+    </div>
+</section>
+
+<section class="mt-20 bg-slate-900 text-white p-10 md:p-12 rounded-2xl shadow-xl text-center">
+    <p class="text-[#ff71f9] font-medium tracking-wide uppercase text-sm mb-2">Định hướng tiếp theo</p>
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 font-serif">Sẵn sàng đi tiếp</h3>
+    <p class="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed text-lg">
+        Bạn không phải là giám đốc ra lệnh cho bộ phận Kỹ thuật. Bạn là người chỉ đường và dọn dẹp chướng ngại vật cho họ. Sau khi sản phẩm chuyển hóa từ mã nguồn sang dạng hình thù nguyên vẹn, bước tiếp theo thuộc về chuyên môn truyền tải thông điệp. Chào mừng đến với Chương 8, cách đưa sản phẩm ra ngoài thương trường.
+    </p>
+</section>
+  </div>
+</body>
+</html>

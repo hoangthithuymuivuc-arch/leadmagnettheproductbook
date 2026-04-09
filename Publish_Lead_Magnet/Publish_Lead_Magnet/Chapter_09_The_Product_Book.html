@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương 9: Finishing the Cycle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
+        h1, h2, h3, .serif-text { font-family: 'Lora', serif; }
+        .clean-card {
+            background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .clean-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+        .accent-blue { color: #ff71f9; }
+        .bg-accent-blue { background-color: #ff71f9; color: #ffffff; }
+    </style>
+</head>
+<body class="antialiased min-h-screen py-12 px-5 md:px-0">
+  <div class="max-w-4xl mx-auto space-y-16">
+
+<header class="text-center space-y-6 mb-16">
+    <p class="text-sm font-semibold tracking-widest text-slate-500 uppercase">Tóm tắt sách The Product Book</p>
+    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+        Chương 9<br><span class="accent-blue text-3xl mt-2 block">Finishing the Cycle</span>
+    </h1>
+            
+    <div class="text-lg text-slate-700 mt-6 max-w-3xl mx-auto leading-relaxed">
+        <strong>Tổng quan:</strong> Đưa sản phẩm lên môi trường thực tế sẽ tạo ra một chu kỳ phát triển mới. Chương cuối đúc kết cách bạn giao tiếp và phối hợp với tập thể đi qua mỗi lần ra mắt. Dựa vào đó, bạn sẽ nắm được cách điều hành các buổi họp tìm lỗi một cách súc tích, đọc số liệu để quyết định xem nên nâng cấp, bảo dưỡng duy trì hay ngừng hẳn việc phân bổ thời gian cho tính năng đó.
+    </div>
+            
+    <div class="bg-white p-8 mt-10 italic text-lg text-slate-600 border-l-4 border-[#ff71f9] rounded-r-lg text-left shadow-sm">
+        <p>"Đúng giờ linh, app nổi chữ Publish (Phát hành). Nguyên dàn kỹ sư thở hắt ra vì nhẹ gánh. Vậy là kết thúc phải không? Làm gì có! Nhập môn PM bắt đầu từ chiến trường đẫm máu Post-launch (Hậu ra mắt). Đây là nơi đối diện với sự thật: Những cái nhíu mày chê trách dữ liệu tụt dốc thảm bại, những màn họp mổ xẻ dội ngược vào cái bản ngã cá nhân. Mọi thứ chỉ mới thực sự bắt đầu."</p>
+    </div>
+</header>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">1</span>
+        <span>Tôn vinh tập thể (Nghệ thuật ghi nhận thành tựu)</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Sự lố bịch tột đỉnh của những ông sếp hóp bụng làm chức quản lý luôn nằm ở chỗ: Nhảy cẫng lên bục vinh quang ôm cúp vàng chói rồi quên khuấy mất anh em dev đang gục mồ hôi mặt sau màn hình máy tính.<br><br>Quy tắc thép của PM nằm ở điều này: Vinh dự luôn là "Do tập thể đồng mưu thiết kế nặn cày", chứ đừng nhận vơ là "Tôi một nắng hai sương làm ra cái app". Nhưng nếu sập hệ thống do lỗi chết tươi lúc triển khai, cái mặt người thủ lĩnh PM phải là tấm khiên ăn tạ đầu tiên.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">2</span>
+        <span>Bàn sinh mổ Postmortem</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Mọi bức xúc cày ải từ ngày deadline dội ngược lên phải có chỗ tống khứ. Khi con đẻ an toàn cập bờ, PM hô triệu tập bàn sinh mổ - cuốc họp Postmortem (<em>Họp phân tích tử thuật độ rủi</em>).<br><br>Trên tấm bảng có gạch phân rã ngang ngay chính giữa. Phía cực sáng là lời khen khích, phía cực tối vạch tội những gờ lố hoặc hớ hênh quy trình code. Nằm lòng luật chơi duy nhất: Ở cái bàn postmortem này ta chỉ ngắm súng vào cái app khốn nạn sập thế nào, bóp cò vào hệ thống quản lý, chứ đố ai đụng chạm vào cái nhân cách con người.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">3</span>
+        <span>Ngã ba đường vòng đời sản phẩm</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Hồi chuông đo lường ban phán róc mép rũ bỏ mọi hoang đường, app rơi vào một trong tam ngả.<br><br>Ngả nhất - Đi tiếp (<em>Move on</em>): Tỷ lệ chốt trơn tru. Để im cấu trúc rồi xê dịch kiếm cục tiền tính năng mới. Gạ gẫm xào xáo lại đoạn code ngon lành đang chạy mượt mà là kiểu tư duy vô tích sự nhất.<br><br>Ngả nhì - Đập đi làm lại (<em>Iterate</em>): Số tương tác nát bét rụng xuống dưới ngấn KPI. Kéo cửa dọn sập bàn gỡ lại bằng việc rà tung hỏa mù phép rẽ nhánh A/B (<em>A/B Testing</em>).<br><br>Ngả ba - Tắt đài (<em>Sunsetting</em>): Xong đời. Cái món đẻ ra chả thu được đồng bạc cắc hoặc cấu hình quá kiết xác chạm ngưỡng phế nhân. Nhưng dân có học "rút ống thở" có đẳng cấp bằng cách để rỗng mấy tháng và hất cái file data vào usb cho khách thu dọn trước khi xóa sổ hệ thống trong sự tôn trọng.
+    </div>
+</section>
+
+<section class="space-y-6 mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-4 text-slate-900">
+        <span class="w-10 h-10 rounded-full bg-slate-200 accent-blue flex items-center justify-center text-lg font-sans shrink-0">4</span>
+        <span>Hành trang bắt đầu chức nghiệp</span>
+    </h2>
+    <div class="bg-white p-8 rounded-xl border border-slate-200 text-slate-700 shadow-sm text-lg leading-relaxed">
+        Chẳng giảng đường nào nhào nặn ra một quản lý Sản phẩm vẹn toàn. Cho dù xuất phát điểm từ lò thợ vẽ, thợ gõ code hay chém tay thị trường, sự thăng hạng là thế chân vạc của: Am hiểu mã thuật để đàm đạo ngang tai với tech team, thấu thị bọt sóng nhu cầu mổ xẻ khách ăn chơi, và đốp chát thuyết trình điêu luyện cày ải qua sếp trên.<br><br>Vứt cái tham vọng đòi làm vua ở cái dự án xé vỏ đầu tay. Hãnh diện nhất của người gõ nghiệp Sản phẩm chả nằm ở chức vụ ngực áo, nó nằm cứng ngắc ở cái sản phẩm bạn xé nát cái tay hôm nay.
+    </div>
+</section>
+
+<section class="mt-20 bg-slate-900 text-white p-10 md:p-12 rounded-2xl shadow-xl text-center">
+    <p class="text-[#ff71f9] font-medium tracking-wide uppercase text-sm mb-2">Định hướng tiếp theo</p>
+    <h3 class="text-2xl md:text-3xl font-bold mb-6 font-serif">Sẵn sàng đi tiếp</h3>
+    <p class="text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed text-lg">
+        Vòng đời của một luồng xử lý chưa bao giờ là đường thẳng hội tụ. Nó là một khái niệm vòng cung khép kín. Bạn đóng chốt giai đoạn bằng quá trình mổ xẻ phân tích, ngay lập tức lại đẩy bản thân vào guồng quay tìm kiếm thị hiếu của Chương 3. Đây chính xác là lúc cuốn bách khoa toàn thư The Product Book khép lại, và sự dấn thân của bạn vừa mới bắt đầu.
+    </p>
+</section>
+  </div>
+</body>
+</html>
