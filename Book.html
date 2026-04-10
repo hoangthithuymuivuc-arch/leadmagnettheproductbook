@@ -218,6 +218,10 @@
       ...chapters,
       { title: "Trang cuối", file: "trang_cuoi.html" }
     ];
+    const tocEntries = [
+      { title: "Trang bìa" },
+      ...contentPages.map((page) => ({ title: page.title }))
+    ];
 
     const storageKey = "product-book-v3-last-position";
     const chapterList = document.getElementById("chapterList");
@@ -230,53 +234,23 @@
     const cover = document.getElementById("cover");
 
     const sections = [cover];
+    cover.id = "section-0";
     let currentIndex = 0;
     let observer = null;
 
     function renderChapterList() {
       chapterList.innerHTML = "";
-      const coverItem = document.createElement("li");
-      const coverBtn = document.createElement("button");
-      coverBtn.type = "button";
-      coverBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
-      coverBtn.textContent = "Trang bìa";
-      coverBtn.setAttribute("aria-current", currentIndex === 0 ? "true" : "false");
-      coverBtn.addEventListener("click", () => scrollToSection(0));
-      coverItem.appendChild(coverBtn);
-      chapterList.appendChild(coverItem);
-
-      const forewordItem = document.createElement("li");
-      const forewordBtn = document.createElement("button");
-      forewordBtn.type = "button";
-      forewordBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
-      forewordBtn.textContent = "Lời nói đầu";
-      forewordBtn.setAttribute("aria-current", currentIndex === 1 ? "true" : "false");
-      forewordBtn.addEventListener("click", () => scrollToSection(1));
-      forewordItem.appendChild(forewordBtn);
-      chapterList.appendChild(forewordItem);
-
-      chapters.forEach((chapter, index) => {
+      tocEntries.forEach((entry, index) => {
         const li = document.createElement("li");
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
-        btn.textContent = chapter.title;
-        btn.setAttribute("aria-current", index + 2 === currentIndex ? "true" : "false");
-        btn.addEventListener("click", () => scrollToSection(index + 2));
+        btn.textContent = entry.title;
+        btn.setAttribute("aria-current", index === currentIndex ? "true" : "false");
+        btn.addEventListener("click", () => scrollToSection(index));
         li.appendChild(btn);
         chapterList.appendChild(li);
       });
-
-      const closingIdx = chapters.length + 2;
-      const closingItem = document.createElement("li");
-      const closingBtn = document.createElement("button");
-      closingBtn.type = "button";
-      closingBtn.className = "chapter-item w-full text-left px-3 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 transition text-sm";
-      closingBtn.textContent = "Trang cuối";
-      closingBtn.setAttribute("aria-current", currentIndex === closingIdx ? "true" : "false");
-      closingBtn.addEventListener("click", () => scrollToSection(closingIdx));
-      closingItem.appendChild(closingBtn);
-      chapterList.appendChild(closingItem);
     }
 
     function updateProgress() {
@@ -297,6 +271,7 @@
       sections[index].scrollIntoView({ behavior: "smooth", block: "start" });
       setCurrentIndex(index);
       localStorage.setItem(storageKey, String(index));
+      history.replaceState(null, "", "#section-" + index);
       tocPanel.classList.add("hidden-panel");
     }
 
@@ -425,8 +400,9 @@
         const article = document.createElement("article");
         article.className = "portrait-page chapter-shell rounded-2xl border border-slate-200 bg-white shadow-lg";
         article.dataset.index = String(chapterIdx + 1);
+        article.id = "section-" + String(chapterIdx + 1);
         const holder = document.createElement("div");
-        holder.className = "chapter-body p-0";
+        holder.className = "chapter-body p-2 sm:p-3 md:p-4";
         article.appendChild(holder);
         chapterContainer.appendChild(article);
         sections.push(article);
@@ -453,7 +429,11 @@
       updateProgress();
 
       const savedIndex = Number(localStorage.getItem(storageKey));
-      if (!Number.isNaN(savedIndex) && savedIndex >= 0 && savedIndex < sections.length) {
+      const hashMatch = window.location.hash.match(/^#section-(\d+)$/);
+      const hashIndex = hashMatch ? Number(hashMatch[1]) : NaN;
+      if (!Number.isNaN(hashIndex) && hashIndex >= 0 && hashIndex < sections.length) {
+        setTimeout(() => scrollToSection(hashIndex), 300);
+      } else if (!Number.isNaN(savedIndex) && savedIndex >= 0 && savedIndex < sections.length) {
         setTimeout(() => scrollToSection(savedIndex), 300);
       } else {
         setCurrentIndex(0);

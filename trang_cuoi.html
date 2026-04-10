@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
@@ -10,6 +10,51 @@
   <style>
     body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.7; }
     .heading-serif { font-family: 'Lora', serif; }
+    .banner-bleed {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      overflow: hidden;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      background: #0f172a;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.15);
+    }
+    .contact-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      background: #ffffff;
+      padding: 1.35rem 1.45rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+    }
+    .contact-icon-wrap {
+      width: 2.15rem;
+      height: 2.15rem;
+      border-radius: 0.7rem;
+      border: 1px solid #dbeafe;
+      background: linear-gradient(165deg, #ffffff 0%, #eff6ff 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.15);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .contact-icon {
+      width: 1.02rem;
+      height: 1.02rem;
+      color: #1d4ed8;
+    }
+    .contact-link {
+      color: #1e3a8a;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .contact-link:hover {
+      color: #0f172a;
+      border-color: rgba(15, 23, 42, 0.45);
+    }
     .gv-photo {
       width: 7rem;
       height: 7rem;
@@ -23,16 +68,15 @@
     }
   </style>
 </head>
-<body class="antialiased min-h-screen py-10 px-4 md:px-6">
+<body class="antialiased min-h-screen py-12 md:py-14 px-5 sm:px-8 md:px-10">
   <!--
     Ảnh trong thư mục assets/:
     - banner: banner-trang-cuoi.svg
     - giảng viên: hoang-duc-minh-product-academy-300x300.png, Dang-hai-loc-300x300.png, Phong-nguyen-300x300.png
     - logo: Product academy_logo.png
   -->
-  <div class="max-w-4xl mx-auto space-y-10">
-
-    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 shadow-xl">
+  <div class="max-w-3xl mx-auto space-y-10">
+    <div class="banner-bleed mb-10 md:mb-12">
       <img
         src="assets/banner-trang-cuoi.svg"
         alt="Banner Product Academy"
@@ -98,20 +142,46 @@
         <p class="heading-serif text-xl md:text-2xl font-bold text-slate-900">Product Academy</p>
       </div>
       <p class="text-slate-600 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
-        Phát triển năng lực bài bản và toàn diện cho người làm sản phẩm chuyên nghiệp
+        Phát triển năng lực bài bản và toàn diện
+        <br>
+        cho người làm sản phẩm chuyên nghiệp
       </p>
-      <ul class="space-y-3 text-left max-w-md mx-auto text-sm md:text-base">
-        <li class="flex gap-2">
-          <span class="shrink-0" aria-hidden="true">☎</span>
-          <span><strong class="text-slate-800">Hotline:</strong> <a href="tel:+84367155580" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900">036-715-5580</a></span>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 text-left max-w-3xl mx-auto text-sm md:text-base mt-6 md:mt-8">
+        <li class="contact-item flex gap-3 items-start md:items-center">
+          <span class="contact-icon-wrap" aria-hidden="true">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 4.5h3.6c.5 0 .93.34 1.05.82l.75 3c.1.4-.02.82-.31 1.11L8.7 10.82a13.2 13.2 0 0 0 4.47 4.47l1.39-1.39c.29-.29.71-.41 1.11-.31l3 .75c.48.12.82.55.82 1.05V19a1.5 1.5 0 0 1-1.5 1.5C10.6 20.5 3.5 13.4 3.5 6A1.5 1.5 0 0 1 5 4.5z"/>
+            </svg>
+          </span>
+          <span class="leading-relaxed">
+            <strong class="text-slate-800 block text-xs uppercase tracking-[0.14em]">Hotline</strong>
+            <a href="tel:+84367155580" class="contact-link text-[15px] md:text-base">036-715-5580</a>
+          </span>
         </li>
-        <li class="flex gap-2">
-          <span class="shrink-0" aria-hidden="true">📩</span>
-          <span><strong class="text-slate-800">Email:</strong> <a href="mailto:hanhnhm@agilead.vn" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900">hanhnhm@agilead.vn</a></span>
+        <li class="contact-item flex gap-3 items-start md:items-center">
+          <span class="contact-icon-wrap" aria-hidden="true">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3.5" y="5" width="17" height="14" rx="2.2"/>
+              <path d="m4.8 7 7.2 5.2L19.2 7"/>
+            </svg>
+          </span>
+          <span class="leading-relaxed">
+            <strong class="text-slate-800 block text-xs uppercase tracking-[0.14em]">Email</strong>
+            <a href="mailto:hanhnhm@agilead.vn" class="contact-link text-[15px] md:text-base break-all">hanhnhm@agilead.vn</a>
+          </span>
         </li>
-        <li class="flex gap-2">
-          <span class="shrink-0" aria-hidden="true">🌍</span>
-          <span><strong class="text-slate-800">Website:</strong> <a href="https://productacademy.edu.vn/" target="_blank" rel="noopener noreferrer" class="text-indigo-700 underline decoration-indigo-300 hover:text-indigo-900 break-all">https://productacademy.edu.vn/</a></span>
+        <li class="contact-item flex gap-3 items-start md:items-center">
+          <span class="contact-icon-wrap" aria-hidden="true">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.05" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2.3c2.35 2.52 3.7 6.01 3.7 9.7 0 3.7-1.35 7.18-3.7 9.7-2.35-2.52-3.7-6-3.7-9.7 0-3.69 1.35-7.18 3.7-9.7z"/>
+            </svg>
+          </span>
+          <span class="leading-relaxed">
+            <strong class="text-slate-800 block text-xs uppercase tracking-[0.14em]">Website</strong>
+            <a href="https://productacademy.edu.vn/" target="_blank" rel="noopener noreferrer" class="contact-link break-all text-[15px] md:text-base">productacademy.edu.vn</a>
+          </span>
         </li>
       </ul>
     </footer>

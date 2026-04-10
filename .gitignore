@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# Artefact build (tạo bằng build_book_pdf.py)
+The-Product-Book-Ban-tom-tat.pdf
+
+# Hệ điều hành / IDE
+Thumbs.db
+Desktop.ini
+.DS_Store
+.idea/
+.vscode/
