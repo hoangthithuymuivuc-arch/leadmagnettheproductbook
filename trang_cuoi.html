@@ -20,6 +20,25 @@
       background: #0f172a;
       box-shadow: 0 12px 34px rgba(15, 23, 42, 0.15);
     }
+    .banner-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.6rem;
+      border-radius: 0.9rem;
+      background: #ff71f9;
+      color: #030e2a;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      box-shadow: 0 10px 22px rgba(255, 113, 249, 0.32);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      transform-origin: center;
+    }
+    .banner-cta:hover {
+      transform: scale(1.04);
+      box-shadow: 0 14px 28px rgba(255, 113, 249, 0.38);
+    }
     .contact-item {
       border: 1px solid #e2e8f0;
       border-radius: 1rem;
@@ -82,13 +101,30 @@
   -->
   <div class="max-w-3xl mx-auto space-y-10">
     <div class="banner-bleed mb-10 md:mb-12">
-      <img
-        src="assets/banner-trang-cuoi.svg"
-        alt="Banner Product Academy"
-        class="w-full h-auto block"
-        width="1200"
-        height="360"
-      />
+      <a
+        href="https://productacademy.edu.vn/dao-tao/ai-for-product-builders/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Xem chi tiết khóa AI for Product Builders"
+      >
+        <img
+          src="assets/banner-trang-cuoi.svg"
+          alt="Banner Product Academy"
+          class="w-full h-auto block"
+          width="1200"
+          height="360"
+        />
+      </a>
+    </div>
+    <div class="text-center -mt-4 mb-8 md:mb-10">
+      <a
+        href="https://productacademy.edu.vn/dao-tao/ai-for-product-builders/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="banner-cta"
+      >
+        Tìm hiểu ngay
+      </a>
     </div>
 
     <section class="space-y-6 md:space-y-8 text-slate-700 text-base md:text-lg leading-relaxed">
